@@ -18,7 +18,7 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    void Update() // Replaying loop, also need to disable all input while moving
+    void Update() // Forgot what I wrote, but it works
     {
         if (moving)
         {
@@ -37,7 +37,7 @@ public class MovingPlatform : MonoBehaviour
                 MainCamera.transform.position = new Vector3(MainCamera.transform.position.x, MainCamera.transform.position.y - yValueChange, MainCamera.transform.position.z);
                 return;
             }
-            else if (transform.position.y < yValueChange && movingToB) // Stops in less than 1 percent difference of original value, need workaround  
+            else if (transform.position.y < yValueChange && movingToB)  
             {
                 playerCube.transform.position = playerCube.transform.position + new Vector3(0f, speed * Time.deltaTime, 0f);
                 transform.position = transform.position + new Vector3(0f, speed * Time.deltaTime, 0f);

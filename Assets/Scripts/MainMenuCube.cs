@@ -2,8 +2,9 @@
 using System.Collections;
 
 /*
-           TO DO
-CLEAN CODE BUT DONT CHANGE CODE
+          OVERHAUL
+	Changing the look of all menu's
+	(Buffer next scene during animation of option select)
 */
 
 public class MainMenuCube : MonoBehaviour
@@ -34,10 +35,37 @@ public class MainMenuCube : MonoBehaviour
 		//Debug.Log ("[x, y, z] = [" + scale.x + ", " + scale.y + ", " + scale.z + "]");
 	}
 
+	void BlockFallIntoLevel(int levelSelected)
+    {
+		/*
+		 * Problem: Code doesnt wait for each step to occur, workaround needed
+		 * To do: Comments below
+		 * Revamp: Completely overhaul level select screen (visually appealing)
+		 */
+
+		if (levelSelected <= 10)
+        {
+			// Move block down however many times here
+        }
+		else if (levelSelected <= 20)
+        {
+			// Move block down however many times here
+        }
+		else
+        {
+			// Move block down however many times here
+        }
+
+		for (int i = levelSelected; i > 0; i++)
+        {
+			// Move block left however many times here
+        }
+
+	}
+
 	// Update is called once per frame
 	void Update()
 	{
-
 		float x = 0;
 		float y = -1;
 		if (timesRotated <= 0)

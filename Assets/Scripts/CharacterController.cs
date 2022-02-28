@@ -16,6 +16,8 @@ public class CharacterController : MonoBehaviour {
 	public float x = 0f;
 	public float y = 0f;
 
+	public int numberOfMoves = 0;
+
 	float startAngleRad = 0;				
 	Vector3 startPos;						
 	float rotationTime = 0;					
@@ -50,7 +52,8 @@ public class CharacterController : MonoBehaviour {
 			setRadius();																
 			rotationTime = 0;
 			blockMove.Play(0);
-			isRotate = true;															
+			isRotate = true;
+			numberOfMoves++;
 		}
 	}
 

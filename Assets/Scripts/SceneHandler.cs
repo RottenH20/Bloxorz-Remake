@@ -6,16 +6,21 @@ using UnityEngine.EventSystems;
 
 public class SceneHandler : MonoBehaviour
 {
-    public GameObject MainMenu, LevelSelect, AboutTheGameMenu, SettingsMainMenu;
+    public GameObject MainMenu, LevelSelect, AboutTheGameMenu, SettingsMainMenu, playerBlock;
     bool LevelSelectOn, AboutTheGameOn, MenuSettingsOn = false;
     string temp;
     public AudioSource ClickSound;
+
+    public MainMenuCube MainMenuCube;
 
     /*
     Yes, this is the worst code I have ever written.
     There is 0 orginization within this code.
     Maybe I will get around to orginizing it.
     I am so sorry for anyone reading this.
+
+    2/28/22
+    Code cleaned, no longer "that" bad
     */
 
     public void PlayButtonPressed()
@@ -44,7 +49,7 @@ public class SceneHandler : MonoBehaviour
         SceneManager.LoadScene("Main Menu");
     }
 
-    public void LevelSelectLevelOptionClicked()
+    public void LevelSelectLevelOptionClicked() 
     {
         temp = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.name;
         temp.Substring(4);

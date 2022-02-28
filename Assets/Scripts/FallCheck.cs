@@ -34,12 +34,10 @@ public class FallCheck : MonoBehaviour
             //Debug.Log("Trigger");
             StartCoroutine(initiateFallWin());
         }
-        /*
         if (other.tag == "Player" && !isSingleWidthHole && 1 < playerBlock.transform.position.y) // Make sure only half is over 
         {
             StartCoroutine(initiateDiagnalFall());
         }
-        */
         if (other.tag == "Player" && !isSingleWidthHole)
         {
             StartCoroutine(initiateFall());
@@ -78,7 +76,7 @@ public class FallCheck : MonoBehaviour
         fallingDiagonally = false;
     }
 
-    /* void Update()
+    void Update()
     {
         while (fallingDiagonally) // Fall direction is determined by last swipe (which caused the fall)
         {
@@ -87,20 +85,19 @@ public class FallCheck : MonoBehaviour
              * Direction.Right = xManager = 1
              * Direction.Up = yManager = 1
              * Direction.Down = yManager = -1
-             *
+             */
 
             if (CharacterController.y == -1) // Still need to determine how to only check last move
-                playerBlock.position = playerBlock.position + new Vector3(Time.deltaTime, -Time.deltaTime, 0); // Change fall direction
+                playerBlock.transform.position = playerBlock.transform.position + new Vector3(Time.deltaTime, -Time.deltaTime, 0); // Change fall direction
 
             else if (CharacterController.y == 1)
-                playerBlock.position = playerBlock.position + new Vector3(-Time.deltaTime, -Time.deltaTime, 0);
+                playerBlock.transform.position = playerBlock.transform.position + new Vector3(-Time.deltaTime, -Time.deltaTime, 0);
 
             if (CharacterController.x == -1)
-                playerBlock.position = playerBlock.position + new Vector3(0, -Time.deltaTime, Time.deltaTime);
+                playerBlock.transform.position = playerBlock.transform.position + new Vector3(0, -Time.deltaTime, Time.deltaTime);
 
             else if (CharacterController.x == 1)
-                playerBlock.position = playerBlock.position + new Vector3(0, -Time.deltaTime, -Time.deltaTime);
+                playerBlock.transform.position = playerBlock.transform.position + new Vector3(0, -Time.deltaTime, -Time.deltaTime);
         }
-    }
-    */
+    }  
 }
