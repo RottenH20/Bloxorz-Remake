@@ -6,12 +6,11 @@ using UnityEngine.EventSystems;
 
 public class SceneHandler : MonoBehaviour
 {
+    public Animator transition;
     public GameObject MainMenu, LevelSelect, AboutTheGameMenu, SettingsMainMenu, playerBlock;
     bool LevelSelectOn, AboutTheGameOn, MenuSettingsOn = false;
     string temp;
     public AudioSource ClickSound;
-
-    public MainMenuCube MainMenuCube;
 
     /*
     Yes, this is the worst code I have ever written.
@@ -41,19 +40,19 @@ public class SceneHandler : MonoBehaviour
 
     public void reLoadCurrentScene()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        StartCoroutine(AnimationLoad(SceneManager.GetActiveScene().name));
     }
 
     public void returnToMainMenu()
     {
-        SceneManager.LoadScene("Main Menu");
+        StartCoroutine(AnimationLoad("Main Menu"));
     }
 
     public void LevelSelectLevelOptionClicked() 
     {
         temp = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.name;
         temp.Substring(4);
-        SceneManager.LoadScene(temp);
+        StartCoroutine(AnimationLoad(temp));
     }
 
     public void AboutTheGameButtonPressed()
@@ -72,6 +71,18 @@ public class SceneHandler : MonoBehaviour
         AboutTheGameOn = !AboutTheGameOn;
     }
 
+    public void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "Main Menu")
+        {
+            FindObjectOfType<AudioControl>().PlayMusic("MainMenuMusic");
+        }
+        else
+        {
+            FindObjectOfType<AudioControl>().PlayMusic("GameMusic");
+        }
+    }
+
     public void SettingsButtonPressed()
     {
         if (MenuSettingsOn)
@@ -86,5 +97,15 @@ public class SceneHandler : MonoBehaviour
         }
         ClickSound.Play();
         MenuSettingsOn = !MenuSettingsOn;
+    }
+
+    IEnumerator AnimationLoad(string sceneName)
+    {
+        // Play animation
+        transition.SetTrigger("Start");
+        // Wait
+        yield return new WaitForSeconds(1); // Change depending on transistion time
+        //Load Scene
+        SceneManager.LoadScene(sceneName);
     }
 }

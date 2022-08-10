@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class CanvasHandlerLevel : MonoBehaviour
 {
-    public GameObject WinMenu, SettingsMenu, DeathMenu, SettingsButton, InputManager;
-    public Text NumberOfMovesUIWin, NumberOfMovesUIDeath;
+    public GameObject SettingsMenu, SettingsButton, InputManager;
     bool settingsOn = false;
     public AudioSource ClickSound;
-    CharacterController CharacterController;
+    public CharacterController CharacterController;
 
     public void flipInput()
     {
@@ -21,18 +20,18 @@ public class CanvasHandlerLevel : MonoBehaviour
 
     public void playerDied()
     {
-        DeathMenu.SetActive(true);
         SettingsButton.SetActive(false);
+        SettingsMenu.SetActive(true);
         flipInput();
-        NumberOfMoves();
+        //NumberOfMovesUIWin.text = NumberOfMovesUIWin.text + CharacterController.numberOfMoves.ToString();
+        //NumberOfMovesUIDeath.text = NumberOfMovesUIDeath.text + CharacterController.numberOfMoves.ToString();
     }
 
     public void ActivateWinMenu()
     {
-        WinMenu.SetActive(true);
         SettingsButton.SetActive(false);
+        SettingsMenu.SetActive(true);
         flipInput();
-        NumberOfMoves();
     }
 
     public void SettingsButtonClicked()
@@ -49,7 +48,7 @@ public class CanvasHandlerLevel : MonoBehaviour
             SettingsMenu.SetActive(true);
             settingsOn = true;
         }
-        ClickSound.Play();
+        PlayClickSound();
     }
 
     public void toggleSound()
@@ -58,9 +57,9 @@ public class CanvasHandlerLevel : MonoBehaviour
         // soundOn = !soundOn;
     }
 
-    public void NumberOfMoves()
+    // This is in own method for use in Menupagehandeler.cs
+    public void PlayClickSound()
     {
-        NumberOfMovesUIWin.text = NumberOfMovesUIWin.text + CharacterController.numberOfMoves.ToString();
-        NumberOfMovesUIDeath.text = NumberOfMovesUIDeath.text + CharacterController.numberOfMoves.ToString();
+        ClickSound.Play();
     }
 }

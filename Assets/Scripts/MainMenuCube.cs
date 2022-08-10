@@ -1,25 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/*
-          OVERHAUL
-	Changing the look of all menu's
-	(Buffer next scene during animation of option select)
-*/
-
 public class MainMenuCube : MonoBehaviour
 {
-	public GameObject imageInfront;
-	public GameObject pointB;
 
 	public float rotationPeriod = 0.3f;
 	Vector3 scale;
 
+	public bool diagonallyRight = true;
+
+	bool reverse = false;
+
+	public int numberOfFlips = 25;
+
 	bool isRotate = false;
-	float timesRotated = 12;
-	float circleCount = 4;
 	float directionX = 0;
 	float directionZ = 0;
+
+	float x = 0f;
+	float y = 0f;
 
 	float startAngleRad = 0;
 	Vector3 startPos;
@@ -35,64 +34,34 @@ public class MainMenuCube : MonoBehaviour
 		//Debug.Log ("[x, y, z] = [" + scale.x + ", " + scale.y + ", " + scale.z + "]");
 	}
 
-	void BlockFallIntoLevel(int levelSelected)
-    {
-		/*
-		 * Problem: Code doesnt wait for each step to occur, workaround needed
-		 * To do: Comments below
-		 * Revamp: Completely overhaul level select screen (visually appealing)
-		 */
-
-		if (levelSelected <= 10)
-        {
-			// Move block down however many times here
-        }
-		else if (levelSelected <= 20)
-        {
-			// Move block down however many times here
-        }
-		else
-        {
-			// Move block down however many times here
-        }
-
-		for (int i = levelSelected; i > 0; i++)
-        {
-			// Move block left however many times here
-        }
-
-	}
-
 	// Update is called once per frame
 	void Update()
 	{
-		float x = 0;
-		float y = -1;
-		if (timesRotated <= 0)
-		{
-			if (circleCount == 4)
-            {
-				x = 1;
-				y = 0;
-            }
-			if (circleCount == 3)
-			{
-				x = 0;
-				y = 1;
-			}
-			if (circleCount == 2)
-			{
-				x = -1;
-				y = 0;
-			}
-			if (circleCount == 1)
-			{
-				x = 0;
-				y = -1;
-			}
-		}
+		if(diagonallyRight && !reverse)
+        {
+			x = 1;
+			y = 0;
+        }
+		else if (diagonallyRight && reverse)
+        {
+			x = -1;
+			y = 0;
+        }
+		else if (!diagonallyRight && !reverse)
+        {
+			x = 0;
+			y = 1;
+        }
+		else
+        {
+			x = 0;
+			y = -1;
+        }
+
 		if ((x != 0 || y != 0) && !isRotate)
 		{
+			//InputManager.xManager = 0;
+			//InputManager.yManager = 0;
 			//Debug.Log(x + " X");
 			//Debug.Log(y + " Y");
 			directionX = y;
@@ -105,15 +74,13 @@ public class MainMenuCube : MonoBehaviour
 			setRadius();
 			rotationTime = 0;
 			isRotate = true;
-			timesRotated--;
-			if (circleCount != 1)
-				circleCount--;
-			else
-				circleCount = 4;
+			if (numberOfFlips == 0)
+            {
+				reverse = !reverse;
+				numberOfFlips = 21; 
+            }
+			numberOfFlips--;
 		}
-		imageInfront.transform.position = Vector3.MoveTowards(imageInfront.transform.position, pointB.transform.position, 5 * Time.deltaTime);
-		if (imageInfront.transform.position == pointB.transform.position)
-			imageInfront.SetActive(false);
 	}
 
 	void FixedUpdate()

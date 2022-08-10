@@ -53,7 +53,7 @@ public class CharacterController : MonoBehaviour {
 			rotationTime = 0;
 			blockMove.Play(0);
 			isRotate = true;
-			numberOfMoves++;
+			numberOfMoves++; // Used to keep track of amount of moves made
 		}
 	}
 
