@@ -23,6 +23,7 @@ public class CanvasHandlerLevel : MonoBehaviour
         SettingsButton.SetActive(false);
         SettingsMenu.SetActive(true);
         flipInput();
+
         //NumberOfMovesUIWin.text = NumberOfMovesUIWin.text + CharacterController.numberOfMoves.ToString();
         //NumberOfMovesUIDeath.text = NumberOfMovesUIDeath.text + CharacterController.numberOfMoves.ToString();
     }

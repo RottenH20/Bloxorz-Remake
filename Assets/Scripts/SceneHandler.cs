@@ -20,6 +20,8 @@ public class SceneHandler : MonoBehaviour
 
     2/28/22
     Code cleaned, no longer "that" bad
+
+    Need to get player data and change color depending on if player reached that level
     */
 
     public void PlayButtonPressed()
@@ -52,6 +54,8 @@ public class SceneHandler : MonoBehaviour
     {
         temp = EventSystem.current.currentSelectedGameObject.transform.parent.gameObject.name;
         temp.Substring(4);
+        // Check to make sure that level can be played here
+
         StartCoroutine(AnimationLoad(temp));
     }
 
@@ -71,16 +75,9 @@ public class SceneHandler : MonoBehaviour
         AboutTheGameOn = !AboutTheGameOn;
     }
 
-    public void Start()
+    private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "Main Menu")
-        {
-            FindObjectOfType<AudioControl>().PlayMusic("MainMenuMusic");
-        }
-        else
-        {
-            FindObjectOfType<AudioControl>().PlayMusic("GameMusic");
-        }
+        FindObjectOfType<AudioControl>().PlayMusic("MainMenuMusic");
     }
 
     public void SettingsButtonPressed()
@@ -105,6 +102,14 @@ public class SceneHandler : MonoBehaviour
         transition.SetTrigger("Start");
         // Wait
         yield return new WaitForSeconds(1); // Change depending on transistion time
+        if (sceneName == "MainMenu")
+        {
+            FindObjectOfType<AudioControl>().PlayMusic("MainMenu");
+        }
+        else
+        {
+            FindObjectOfType<AudioControl>().PlayMusic("GameMusic");
+        }
         //Load Scene
         SceneManager.LoadScene(sceneName);
     }

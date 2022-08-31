@@ -71,13 +71,6 @@ public class AudioControl : MonoBehaviour
                 break;
             }
         }
-        //if (playingTrackIndex == lastTrackIndex)
-        //{
-            //Debug.Log("Same Track Selected");
-            //return;
-        //}
-        //else
-        //{
             if (isPlaying)
             {
                 Debug.Log("Fading in new music - Fading out old music");
@@ -88,6 +81,5 @@ public class AudioControl : MonoBehaviour
                 Debug.Log("Fading in new music");
                 StartCoroutine(FadeInNewMusic());
             }
-        //}
     }
 }

@@ -51,6 +51,11 @@ public class MenuPageHandeler : MonoBehaviour
         CanvasHandlerLevel.PlayClickSound();
     }
 
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
     public void HomeButton()
     {
         HomePage.SetActive(true);
