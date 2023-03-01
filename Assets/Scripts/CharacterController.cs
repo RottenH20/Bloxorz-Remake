@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class CharacterController : MonoBehaviour {
 
@@ -9,14 +10,23 @@ public class CharacterController : MonoBehaviour {
 	public InputManager InputManager;
 	public AudioSource blockMove;
 
+	// Make sure object called smokePuff is in scene
+	private ParticleSystem smokePuff;
+
 	bool isRotate = false;					
 	float directionX = 0;					
 	float directionZ = 0;
 
+	[HideInInspector]
 	public float x = 0f;
+	[HideInInspector]
 	public float y = 0f;
-
+	[HideInInspector]
 	public int numberOfMoves = 0;
+	[HideInInspector]
+	public bool Falling = false;
+
+	public CanvasHandlerLevel CanvasHandlerLevel;
 
 	float startAngleRad = 0;				
 	Vector3 startPos;						
@@ -29,6 +39,7 @@ public class CharacterController : MonoBehaviour {
 	void Start () {
 		scale = transform.lossyScale;
 		//Debug.Log ("[x, y, z] = [" + scale.x + ", " + scale.y + ", " + scale.z + "]");
+		smokePuff = GameObject.Find("smokePuff").GetComponent<ParticleSystem>();
 	}
 
 	// Update is called once per frame
@@ -54,6 +65,7 @@ public class CharacterController : MonoBehaviour {
 			blockMove.Play(0);
 			isRotate = true;
 			numberOfMoves++; // Used to keep track of amount of moves made
+			CanvasHandlerLevel.updateMoveCounter();
 		}
 	}
 
@@ -80,6 +92,11 @@ public class CharacterController : MonoBehaviour {
 				directionX = 0;
 				directionZ = 0;
 				rotationTime = 0;
+				if (this.transform.position.y > 1.9f && this.transform.position.y < 2.1f)
+					smokePuff.transform.position = this.transform.position + new Vector3(0, -1f, 0);
+				else
+					smokePuff.transform.position = this.transform.position + new Vector3(0, -0.5f, 0);
+				smokePuff.Play(smokePuff);
 			}
 		}
 	}
@@ -124,4 +141,14 @@ public class CharacterController : MonoBehaviour {
 		}
 		//Debug.Log (radius + ", " + startAngleRad);
 	}
+
+	public bool fallingCheck()
+    {
+		return Falling;
+    }
+
+	public void setFallingTrue()
+    {
+		Falling = true;
+    }
 }

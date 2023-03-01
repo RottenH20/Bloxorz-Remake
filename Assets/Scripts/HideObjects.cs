@@ -5,6 +5,10 @@ using System.Collections.Generic;
 public class HideObjects : MonoBehaviour
 {
 
+    // Possibly need to get the object to swap with a "ghost" block in its place
+    // This ghost block would copy all properties of the original
+    // Then after player is seen it would revert back with current transforms
+
     public Transform WatchTarget;
     public LayerMask OccluderMask;
 

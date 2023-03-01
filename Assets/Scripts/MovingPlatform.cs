@@ -9,6 +9,7 @@ public class MovingPlatform : MonoBehaviour
     public float speed = 3f; // Speed of movement
     public float yValueChange = 9.75f;
     public GameObject playerCube, MainCamera; // We use this to move the character with the moving platform for it to seem as it is being pushed by it
+    public bool mainMenu = false;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -20,6 +21,22 @@ public class MovingPlatform : MonoBehaviour
 
     void Update() // Forgot what I wrote, but it works
     {
+        if (mainMenu)
+        {
+            if (!movingToB)
+            {
+                transform.position = transform.position + new Vector3(0f, -speed * Time.deltaTime, 0f);
+                if (transform.position.y <= -1.25f)
+                    movingToB = !movingToB;
+            }
+            else
+            {
+                transform.position = transform.position + new Vector3(0f, +speed * Time.deltaTime, 0f);
+                if (transform.position.y >= yValueChange)
+                    movingToB = !movingToB;
+            }
+            return;
+        }
         if (moving)
         {
             if (transform.position.y > -0.25f && !movingToB)

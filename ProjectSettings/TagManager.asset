@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Movable
   - Block Player
+  - Bounds
+  - ActiveBounds
   layers:
   - Default
   - TransparentFX
@@ -16,7 +18,7 @@ TagManager:
   - 
   - 
   - ContactWall
-  - 
+  - Bounds
   - 
   - 
   - 

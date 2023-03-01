@@ -14,7 +14,7 @@ public class PushableObject : MonoBehaviour
 {
     bool moving = false;
 
-    public int moveSpeed = 5;
+    public float moveSpeed = 2.5f; // Need consistant speed at which the object moves once player touches it
 
     public void PushObject(GameObject collider)
     {
@@ -47,11 +47,12 @@ public class PushableObject : MonoBehaviour
     {
         //Debug.Log("PushObject");
         Vector3 currentPos = gameObject.transform.position;
+        
         Vector3 newPosition = new Vector3(gameObject.transform.position.x + x, gameObject.transform.position.y, gameObject.transform.position.z + z);
         var t = 0f;
         while (t < 1)
         {
-            t += Time.deltaTime / moveSpeed;
+            t += Time.deltaTime * moveSpeed;
             gameObject.transform.position = Vector3.Lerp(currentPos, newPosition, t);
             yield return null;
         }

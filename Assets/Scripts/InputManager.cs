@@ -7,6 +7,10 @@ public class InputManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public enum Direction { Left, Up, Right, Down, None }
 
+    public float waitTime = 0.1f; // Time before another input is taken
+    private float currentTime = 0f;
+    private bool canMove = true;
+
     Direction direction;
     Vector2 startPos, endPos;
     public float swipeThreshold = 100f;
@@ -14,6 +18,13 @@ public class InputManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     //public Action<Direction> onSwipeDetected;
     public float xManager = 0; // We use this to convert for CharacterController without needing to do it everyframe but just every swipe
     public float yManager = 0;
+
+    void Update()
+    {
+        if (currentTime >= waitTime)
+            canMove = true;
+        currentTime += Time.deltaTime;
+    }
 
     private void Awake()
     {
@@ -29,8 +40,10 @@ public class InputManager : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (draggingStarted && direction != Direction.None)
+        if (draggingStarted && direction != Direction.None && canMove)
         {
+            canMove = false;
+            currentTime = 0f;
             //Debug.Log("swiped");
             //A swipe is detected
             if (direction == Direction.Left)

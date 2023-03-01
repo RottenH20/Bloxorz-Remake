@@ -1567,12 +1567,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &114637526
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2006,10 +2008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d685e7bf66f1da4898dbfc99da531c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpikesActivated: {fileID: 529026496}
-  SpikesNotActivated: {fileID: 186217800}
-  SpikesActivatedGhost: {fileID: 1588523474}
-  SpikesNotActivatedGhost: {fileID: 1875117016}
 --- !u!65 &152791020
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2315,7 +2313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounds: {fileID: 2132505589}
-  platform: {fileID: 684811278}
+  HueChange: []
 --- !u!65 &181809346
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2897,12 +2895,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &211554348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4332,6 +4332,7 @@ MonoBehaviour:
   yValueChange: 9.75
   playerCube: {fileID: 643438944}
   MainCamera: {fileID: 963194225}
+  mainMenu: 0
 --- !u!65 &358214408
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4797,12 +4798,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &389472543
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5365,7 +5368,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ec9bcbacd17bf409f13d4bf05235b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanvasHandlerLevel: {fileID: 1375061426}
 --- !u!65 &419224274
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7719,7 +7721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ec9bcbacd17bf409f13d4bf05235b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanvasHandlerLevel: {fileID: 1375061426}
 --- !u!65 &609539535
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11007,12 +11008,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &896183004
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12909,12 +12912,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &1090726928
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15943,12 +15948,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &1327004409
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16550,13 +16557,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102bca07d6238084e8ad3f330fb43cb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WinMenu: {fileID: 0}
   SettingsMenu: {fileID: 2034501847}
-  DeathMenu: {fileID: 711280570}
   SettingsButton: {fileID: 1122828136}
   InputManager: {fileID: 2012493671}
-  NumberOfMovesUIWin: {fileID: 0}
-  NumberOfMovesUIDeath: {fileID: 0}
   ClickSound: {fileID: 1375061427}
   CharacterController: {fileID: 0}
 --- !u!82 &1375061427
@@ -16750,13 +16753,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf005e45ea707bf4f9972d3b66ef28a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
   MainMenu: {fileID: 0}
   LevelSelect: {fileID: 0}
   AboutTheGameMenu: {fileID: 0}
   SettingsMainMenu: {fileID: 0}
   playerBlock: {fileID: 0}
   ClickSound: {fileID: 0}
-  MainMenuCube: {fileID: 0}
 --- !u!1001 &1377252650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16844,10 +16847,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d685e7bf66f1da4898dbfc99da531c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpikesActivated: {fileID: 128627773}
-  SpikesNotActivated: {fileID: 1469956986}
-  SpikesActivatedGhost: {fileID: 977637930}
-  SpikesNotActivatedGhost: {fileID: 537277327}
 --- !u!65 &1382760116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17313,12 +17312,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &1426364661
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17751,12 +17752,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &1467480829
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19103,7 +19106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ec9bcbacd17bf409f13d4bf05235b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanvasHandlerLevel: {fileID: 1375061426}
 --- !u!65 &1561917669
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19524,12 +19526,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &1616023764
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23585,7 +23589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounds: {fileID: 211554345}
-  platform: {fileID: 952526874}
+  HueChange: []
 --- !u!65 &1930305065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23881,12 +23885,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &1939777602
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24314,12 +24320,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &1972502129
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24884,6 +24892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7366d2ea28f7547408d6dab5a6b73871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 0.1
   swipeThreshold: 100
   xManager: 0
   yManager: 0
@@ -25966,7 +25975,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ec9bcbacd17bf409f13d4bf05235b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CanvasHandlerLevel: {fileID: 1375061426}
 --- !u!1001 &2121614797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26264,12 +26272,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
-  fallZ: 0
   movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 643438944}
   audioSourceForSingleHole: {fileID: 1375061427}
   CanvasHandlerLevel: {fileID: 1375061426}
   CharacterController: {fileID: 0}
+  timeToReachTarget: 4
 --- !u!65 &2132505592
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26740,7 +26750,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8d8518c05c14d947879249152c99ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 3
 --- !u!4 &4810499402619026964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6173475640359109816, guid: ebb130b30878ed243a6d097c033f808c,

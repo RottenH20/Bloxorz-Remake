@@ -7,6 +7,8 @@ public class MainMenuCube : MonoBehaviour
 	public float rotationPeriod = 0.3f;
 	Vector3 scale;
 
+	public ParticleSystem smokePuff;
+
 	public bool diagonallyRight = true;
 
 	bool reverse = false;
@@ -109,6 +111,11 @@ public class MainMenuCube : MonoBehaviour
 				directionX = 0;
 				directionZ = 0;
 				rotationTime = 0;
+				if (this.transform.position.y > -0.1f && this.transform.position.y < 0.1f)
+					smokePuff.transform.position = this.transform.position + new Vector3(0, -1f, 0);
+				else
+					smokePuff.transform.position = this.transform.position + new Vector3(0, -0.5f, 0);
+				smokePuff.Play(smokePuff);
 			}
 		}
 	}

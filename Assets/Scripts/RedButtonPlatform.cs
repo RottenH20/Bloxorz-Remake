@@ -5,14 +5,16 @@ using UnityEngine;
 public class RedButtonPlatform : MonoBehaviour
 {
     public GameObject bounds;
-    public GameObject platform;
+
+    public HueChange[] HueChange;
     
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
             bounds.SetActive(!bounds.activeSelf); // Swaps the active state of the gameObject
-            platform.SetActive(!platform.activeSelf);
+            for (int i = 0; i < HueChange.Length; i++)
+            HueChange[i].SwitchMaterial();
         }
     }
 }

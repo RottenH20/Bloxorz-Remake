@@ -107,4 +107,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSingleWidthHole: 0
+  movableFallTime: 5
+  rotationSpeed: 0.1
+  movementSpeed: 0.1
   playerBlock: {fileID: 0}
+  audioSourceForSingleHole: {fileID: 0}
+  CanvasHandlerLevel: {fileID: 0}
+  CharacterController: {fileID: 0}
+  timeToReachTarget: 2.5
