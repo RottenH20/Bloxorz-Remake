@@ -8,6 +8,7 @@ TagManager:
   - Block Player
   - Bounds
   - ActiveBounds
+  - Barrier
   layers:
   - Default
   - TransparentFX

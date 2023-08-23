@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class CharacterController : MonoBehaviour {
 
 	public float rotationPeriod = 0.3f;		
 	Vector3 scale;
 
-	public InputManager InputManager;
+	InputManager InputManager;
 	public AudioSource blockMove;
 
 	// Make sure object called smokePuff is in scene
@@ -26,7 +27,9 @@ public class CharacterController : MonoBehaviour {
 	[HideInInspector]
 	public bool Falling = false;
 
-	public CanvasHandlerLevel CanvasHandlerLevel;
+	CanvasHandlerLevel CanvasHandlerLevel;
+
+	List<char> MOVES = new List<char>(); // Used to calculate if upright based off old moves
 
 	float startAngleRad = 0;				
 	Vector3 startPos;						
@@ -37,6 +40,8 @@ public class CharacterController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		CanvasHandlerLevel = GameObject.FindObjectOfType<CanvasHandlerLevel>();
+		InputManager = GameObject.FindObjectOfType<InputManager>();
 		scale = transform.lossyScale;
 		//Debug.Log ("[x, y, z] = [" + scale.x + ", " + scale.y + ", " + scale.z + "]");
 		smokePuff = GameObject.Find("smokePuff").GetComponent<ParticleSystem>();
