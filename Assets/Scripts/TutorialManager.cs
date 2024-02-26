@@ -10,6 +10,10 @@ public class TutorialManager : MonoBehaviour
 
     MenuPageHandeler MenuPageHandeler;
 
+    // These will store each tutorial image in order, if multiple images per level, use 2D array
+    // Ex: Level1 Tutorial, tutorials[0][0], tutorials[0][1], etc...
+    GameObject[][] tutorials;
+
     void Start()
     {
 

@@ -11,7 +11,7 @@ public class MovingPlatform : MonoBehaviour
      * if they are not vertical then dont let them ride
      */
 
-    FloorComponent FloorComponent;
+    FloorComponent FloorComponent; // We use this to check what level the player is on, also the updating for what level the player is on
 
     public bool movingToB = true; // Used to check which way target is moving
     bool moving = false; // Used to check if target is moving
@@ -26,11 +26,32 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            if (true) // Check here if player is vertical
-            {
-                StartCoroutine(bugFix());
-            }
+            StartCoroutine(bugFix());
         }
+    }
+
+    private bool isVertical()
+    {
+        // Simple formula,
+        // X is current floor
+        // If player is on floor 1 they are y = 2, floor 2 they are y = 12, floor 3 they are y = 22, etc...
+        // 
+        // (10 * (X - 1)) + 2 = Player Y if vertical
+        //Debug.Log("Current Floor: " + ((10 * (currentFloor() - 1)) + 2));
+        //Debug.Log("Player Floor: " + (double)(playerCube.transform.position.y)); 
+        //Debug.Log(playerCube.transform.position.y == ((10 * (currentFloor() - 1)) + 2)); // How the fuck is this false?, bug is right here
+
+        if (((10*(currentFloor()-1)) + 2) + 0.1 >= (double)playerCube.transform.position.y && ((10 * (currentFloor() - 1)) + 2) - 0.1 <= (double)playerCube.transform.position.y)
+        {
+            return true;
+        }
+        else
+            return false;
+    }
+
+    public int currentFloor()
+    {
+        return Mathf.FloorToInt((int)playerCube.transform.position.y / 10) + 1;
     }
 
     private void Start()
@@ -46,6 +67,11 @@ public class MovingPlatform : MonoBehaviour
         CanvasHandlerLevel.movingPlatformCameraBug();
         CanvasHandlerLevel.flipInput();
         yield return new WaitForSeconds(0.75f);
+        if (!isVertical())
+        {
+            CanvasHandlerLevel.flipInput();
+            yield break;
+        }
         moving = true;
     }
 
@@ -114,11 +140,10 @@ public class MovingPlatform : MonoBehaviour
         float calculateCameraY()
         {
             float returnValue;
-            int currentFloor = Mathf.FloorToInt((int)playerCube.transform.position.y / 10) + 1;
-            if (currentFloor == 1)
+            if (currentFloor() == 1)
                 returnValue = 16f;
             else
-                returnValue = 16f + ((float)currentFloor * yValueChange) - yValueChange - 0.75f;
+                returnValue = 16f + ((float)currentFloor() * yValueChange) - yValueChange - 0.75f;
             return returnValue;
         }
     }
